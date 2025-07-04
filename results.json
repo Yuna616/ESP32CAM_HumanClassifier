@@ -1,0 +1,26 @@
+[
+    {
+        "image_name": "2025-06-13T01-13-02.159640_esp32_image.jpg",
+        "label": "no human",
+        "confidence": 0.9992709755897522,
+        "timestamp": "2025-06-13T01:13:02.159640"
+    },
+    {
+        "image_name": "2025-06-13T01-17-42.614914_esp32_image.jpg",
+        "label": "sad",
+        "confidence": 0.9464818239212036,
+        "timestamp": "2025-06-13T01:17:42.614914"
+    },
+    {
+        "image_name": "2025-06-13T02-17-51.848638_esp32_image.jpg",
+        "label": "no human",
+        "confidence": 0.9999260902404785,
+        "timestamp": "2025-06-13T02:17:51.848638"
+    },
+    {
+        "image_name": "2025-06-13T02-25-05.818432_esp32_image.jpg",
+        "label": "surprise",
+        "confidence": 0.9505941867828369,
+        "timestamp": "2025-06-13T02:25:05.818432"
+    }
+]

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>예측 결과 목록</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        button.delete-btn {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        button.delete-btn:hover {
+            color: darkred;
+        }
+        .filter-buttons {
+            margin-bottom: 15px;
+        }
+        .filter-buttons button {
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>예측 결과 목록</h1>
+
+    <!-- 필터 버튼 영역 -->
+    <div class="filter-buttons">
+        <button onclick="filterResults('all')">전체</button>
+        <button onclick="filterResults('human')">사람</button>
+        <button onclick="filterResults('no-human')">사람 아님</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>이미지</th>
+                <th>라벨</th>
+                <th>정확도</th>
+                <th>시간</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody id="results-body">
+            {% for entry in results %}
+            {% set is_no_human = 'no human' in entry.label.lower() %}
+            <tr data-type="{{ 'no-human' if is_no_human else 'human' }}">
+                <td><img src="/images/{{ entry.image_name }}" width="100"></td>
+                <td>{{ entry.label }}</td>
+                <td>{{ '%.1f' % (entry.confidence * 100) }}%</td>
+                <td>{{ entry.timestamp }}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteResult('{{ entry.timestamp }}')">✖</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+    async function deleteResult(timestamp) {
+        if (!confirm('삭제하시겠습니까?')) return;
+        const response = await fetch('/delete-result?timestamp=' + encodeURIComponent(timestamp), { method: 'DELETE' });
+        if (response.ok) {
+            alert('삭제 완료');
+            location.reload();
+        } else {
+            alert('삭제 실패');
+        }
+    }
+
+    function filterResults(type) {
+        const rows = document.querySelectorAll('#results-body tr');
+        rows.forEach(row => {
+            const rowType = row.getAttribute('data-type');
+            if (type === 'all' || rowType === type) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    </script>
+</body>
+</html>
