@@ -87,7 +87,7 @@ ESP32CAM_HumanClassifier/
 
 ## 🔍 향후 개선 가능성
 
--   모델 정확도 향상 (더 많은 데이터, augmentation, 더 좋은 네트워크 아키텍처)
+-   모델 정확도 향상 
     
 -   지연(latency) 최적화 — ESP32 내 전처리 또는 경량화된 모델 적용
     
