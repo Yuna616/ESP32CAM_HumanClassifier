@@ -1,5 +1,7 @@
 
 
+## **ESP32CAM_HumanClassifier**
+
 ESP32CAM과 딥러닝 모델을 활용하여 사람이 있는지 감지하고 분류하는 프로젝트입니다.
 
 ---
@@ -8,31 +10,33 @@ ESP32CAM과 딥러닝 모델을 활용하여 사람이 있는지 감지하고 �
 
 - ESP32CAM 보드를 이용해 실시간으로 이미지를 캡처  
 - 딥러닝 기반 이미지 분류기를 통해 "사람 있음" vs "사람 없음" 구분  
+- 사람인 경우, 해당 인물의 감정 분류 
 - 서버-클라이언트 구조 → ESP32CAM에서 이미지를 보내면, 백엔드가 분류 후 결과 리포트  
-- 웹 기반 UI 또는 REST API 제공
+- 웹 기반 UI 제공 
 
 ---
 
 ## ⚙ 구성
 
+
 ```
 
-ESP32CAM\_HumanClassifier/
-├── CameraWebServer            # ESP32CAM 웹서버 코드
-├── classifier                 # 이미지 분류 관련 코드
-├── deepLearningModel          # 학습된 모델 파일 또는 학습 스크립트
-├── images                     # 테스트용 이미지 / 예제 이미지
-├── server                     # 백엔드 서버 코드
-├── service                    # 분류 서비스 / API
-├── templates                  # 웹 UI 템플릿 (HTML 등)
-├── test\_image                 # 테스트 이미지 모아둔 디렉토리
-├── util                       # 공용 유틸리티 함수
-├── app.py                     # 전체 애플리케이션 실행 진입점
-├── main.py                    # 메인 로직 실행 파일
-├── main\_controller.py         # 컨트롤러 역할, 흐름 제어
-└── results.json               # 이전 실행 결과 저장용 JSON 파일
+ESP32CAM_HumanClassifier/  
+├── CameraWebServer # ESP32CAM 웹서버 코드  
+├── classifier # 이미지 분류 관련 코드  
+├── deepLearningModel # 학습된 모델 파일 또는 학습 스크립트  
+├── images # 테스트용 이미지 / 예제 이미지  
+├── server # 백엔드 서버 코드  
+├── service # 분류 서비스 / API  
+├── templates # 웹 UI 템플릿 (HTML 등)  
+├── test_image # 테스트 이미지 모아둔 디렉토리  
+├── util # 공용 유틸리티 함수  
+├── app.py # 전체 애플리케이션 실행 진입점  
+├── main.py # 메인 로직 실행 파일  
+├── main_controller.py # 컨트롤러 역할, 흐름 제어  
+└── results.json # 이전 실행 결과 저장용 JSON 파일
 
-````
+```
 
 ---
 
@@ -43,65 +47,66 @@ ESP32CAM\_HumanClassifier/
 | 마이크로컨트롤러 | ESP32CAM (C / C++) |
 | 이미지 캡처 / 웹서버 | ESP32CAM 자체 웹서버 (CameraWebServer) |
 | 딥러닝 분류 | Python 기반 분류기 / 모델 (TensorFlow, PyTorch 등) |
-| API / 서버 | Python (Flask / FastAPI 등) |
+| API / 서버 | Python FastAPI |
 | 웹 UI | HTML / Templates |
 | 유틸리티 | 공통 유틸리티 함수 / 이미지 전처리 등 |
 
----
+
 
 ## 🚀 설치 및 실행
-
+```
 1. ESP32CAM 보드에 `CameraWebServer` 코드 업로드  
 2. 분류 모델 준비 (deepLearningModel 폴더)  
    - 사전 학습된 모델 파일 복사 또는 학습 스크립트 실행  
 3. 서버 세팅  
-   ```bash
-   cd server
-   pip install -r requirements.txt
-   python app.py
-````
+	터미널에서 
+   python uvicorn -m (fastapi 코드 진입점을 적은 파일 이름):app --reload
 
-4. 웹 UI 접속 또는 API 호출
+5.  웹 UI 접속 또는 API 호출
+    
+    -   브라우저에서 `http://<서버주소>` 접속
+        
+```
+----------
 
-   * 브라우저에서 `http://<서버주소>` 접속
-   * REST API: `/predict` 등 엔드포인트 사용
+## 📊 실제 실행 예시 
 
----
+![](https://blog.kakaocdn.net/dna/bdO0uJ/btsO4QBRKv1/AAAAAAAAAAAAAAAAAAAAANDdbPOQduerrC651Wv_XclvQ6CwxgiS_Bu-2p1RawGA/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=VD%2B6odWdT%2F95ZeSYZrdlXvSfTbI%3D)
+    
 
-## 📊 용도 및 활용 예시
-
-* 보안 감시 시스템: 사람이 들어오면 알림
-* 스마트 홈 / 자동화: 사람이 있을 때 조명/냉난방 조절
-* 출입 통제 시스템
-* 연구 및 학습용 — 임베디드 + 컴퓨터 비전 통합 프로젝트
-
----
+----------
 
 ## 🔍 향후 개선 가능성
 
-* 모델 정확도 향상 (더 많은 데이터, augmentation, 더 좋은 네트워크 아키텍처)
-* 지연(latency) 최적화 — ESP32 내 전처리 또는 경량화된 모델 적용
-* 보안/인증 추가 — 이미지 전송 및 API 호출 보안
-* 웹 UI 사용자 경험 개선
-* 실시간 스트리밍 지원
+-   모델 정확도 향상 (더 많은 데이터, augmentation, 더 좋은 네트워크 아키텍처)
+    
+-   지연(latency) 최적화 — ESP32 내 전처리 또는 경량화된 모델 적용
+    
+-   보안/인증 추가 — 이미지 전송 및 API 호출 보안
+    
+-   웹 UI 사용자 경험 개선
+    
+-   실시간 스트리밍 지원
 
----
+- **AWS 클라우드 활용**:
 
-## 📄 라이선스
+	-  ESP32CAM 데이터 S3에 저장 및 Lambda로 실시간 처리
+    
+	-   AWS IoT Core와 연동하여 원격 모니터링 및 알림 시스템 구축
+    
+	-   클라우드 기반 API 서버로 확장 가능
+    
 
-본 프로젝트는 MIT 라이선스를 사용합니다. 자유롭게 사용, 수정, 배포 가능하며, 원 저작자 표시를 부탁드립니다.
+----------
 
----
+
+
+----------
 
 ## 🙋‍♀️ 제작자
 
-* 개발자: Yuna616
-* GitHub: [Yuna616](https://github.com/Yuna616)
+-   개발자: Yuna616 , Leila
+    
+개발 기간  25.03.15 ~ 25.06.16
 
-```
-
----
-
-원하시면 제가 이 README를 **더 시각적으로 보기 좋게 배지, GIF 예시, 설치 명령어 강조**까지 넣어서 업그레이드해드릴 수도 있어요.  
-그거 해드릴까요?
-```
+개발 기록 블로그: https://lovebotw049.tistory.com/category/%EA%B0%9C%EC%9D%B8%20%EA%B0%9C%EB%B0%9C/ESP32%20cam%20%EA%B8%B0%EB%B0%98%20%EC%96%BC%EA%B5%B4%20%EA%B0%90%EC%A0%95%20%EB%B6%84%EC%84%9D%20%EB%B0%8F%20%EC%8B%9C%EA%B0%81%ED%99%94%20%EC%8B%9C%EC%8A%A4%ED%85%9C
