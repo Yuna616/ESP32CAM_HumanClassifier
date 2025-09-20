@@ -101,12 +101,10 @@ ESP32CAM_HumanClassifier/
 
 
 
-----------
-
 ## 🙋‍♀️ 제작자
 
 -   개발자: Yuna616 , Leila
     
 개발 기간  25.03.15 ~ 25.06.16
 
-개발 기록 블로그: https://lovebotw049.tistory.com/category/%EA%B0%9C%EC%9D%B8%20%EA%B0%9C%EB%B0%9C/ESP32%20cam%20%EA%B8%B0%EB%B0%98%20%EC%96%BC%EA%B5%B4%20%EA%B0%90%EC%A0%95%20%EB%B6%84%EC%84%9D%20%EB%B0%8F%20%EC%8B%9C%EA%B0%81%ED%99%94%20%EC%8B%9C%EC%8A%A4%ED%85%9C
+개발 기록 블로그: https://lovebotw049.tistory.com/15
