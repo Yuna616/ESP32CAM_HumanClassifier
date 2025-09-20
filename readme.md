@@ -4,7 +4,8 @@
 
 ESP32CAM과 딥러닝 모델을 활용하여 사람이 있는지 감지하고 분류하는 프로젝트입니다.
 
----
+
+
 
 ## 📋 개요
 
@@ -14,7 +15,10 @@ ESP32CAM과 딥러닝 모델을 활용하여 사람이 있는지 감지하고 �
 - 서버-클라이언트 구조 → ESP32CAM에서 이미지를 보내면, 백엔드가 분류 후 결과 리포트  
 - 웹 기반 UI 제공 
 
----
+
+
+
+
 
 ## ⚙ 구성
 
@@ -38,7 +42,10 @@ ESP32CAM_HumanClassifier/
 
 ```
 
----
+
+
+
+
 
 ## 🛠 주요 기술 스택
 
@@ -50,6 +57,7 @@ ESP32CAM_HumanClassifier/
 | API / 서버 | Python FastAPI |
 | 웹 UI | HTML / Templates |
 | 유틸리티 | 공통 유틸리티 함수 / 이미지 전처리 등 |
+
 
 
 
@@ -67,14 +75,15 @@ ESP32CAM_HumanClassifier/
     -   브라우저에서 `http://<서버주소>` 접속
         
 ```
-----------
+
 
 ## 📊 실제 실행 예시 
 
 ![](https://blog.kakaocdn.net/dna/bdO0uJ/btsO4QBRKv1/AAAAAAAAAAAAAAAAAAAAANDdbPOQduerrC651Wv_XclvQ6CwxgiS_Bu-2p1RawGA/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=VD%2B6odWdT%2F95ZeSYZrdlXvSfTbI%3D)
     
 
-----------
+
+
 
 ## 🔍 향후 개선 가능성
 
@@ -97,7 +106,7 @@ ESP32CAM_HumanClassifier/
 	-   클라우드 기반 API 서버로 확장 가능
     
 
-----------
+
 
 
 
