@@ -142,7 +142,7 @@ private:
   }
 };
 
-CameraWebServer camServer("KT_GiGA_4019", "6baf6fe006");
+CameraWebServer camServer("your_ssid", "your_password");
 
 void setup() {
   camServer.begin();
