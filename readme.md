@@ -28,7 +28,7 @@ ESP32CAM과 딥러닝 모델을 활용하여 사람이 있는지 감지하고 �
 ESP32CAM_HumanClassifier/  
 ├── CameraWebServer # ESP32CAM 웹서버 코드  
 ├── classifier # 이미지 분류 관련 코드  
-├── deepLearningModel # 학습된 모델 파일 또는 학습 스크립트  
+├── deepLearningModel # 학습된 모델 학습 스크립트  
 ├── images # 테스트용 이미지 / 예제 이미지  
 ├── server # 백엔드 서버 코드  
 ├── service # 분류 서비스 / API  
