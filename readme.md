@@ -43,8 +43,15 @@ ESP32CAM_HumanClassifier/
 ```
 
 
+## UML Diaglam
+### UseCase Diagram
+<img width="1216" height="878" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/344710e6-6272-4cf3-a8a4-07d357f72179" />
 
+### Class Diagram
+<img width="1280" height="695" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/db96b7e5-2182-4c46-b50a-8b42d7692dbb" />
 
+### Sequence Diagram 
+<img width="1280" height="664" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/e8a5184d-16cd-4b5a-9302-ac0c8bd47188" />
 
 
 ## 🛠 주요 기술 스택
